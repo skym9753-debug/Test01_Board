@@ -16,24 +16,14 @@ public class ReplysDAO {
 	private JdbcTemplate jdbc;
 
 	public int insert(ReplysDTO dto, int parent_seq) {
-		String sql = "insert into reply values(reply_seq.nextval,?,?,sysdate,?)";
+		String sql = "insert into replys values(replys_seq.nextval,?,?,sysdate,?)";
 		
 		return jdbc.update(sql, dto.getWriter(), dto.getContents(), parent_seq);
 	}
 	
 	public List<ReplysDTO> selectAll(){ 
-		String sql = "select * from reply order by write_date desc";
+		String sql = "select * from replys order by write_date desc";
 		
 		return jdbc.query(sql, new BeanPropertyRowMapper<ReplysDTO>(ReplysDTO.class));
 	}
-	
-	public void delete(int seq, int parent_seq) {
-		String sql = "delete from reply where seq=? and parent_seq=?";
-		jdbc.update(sql,seq,parent_seq);
-	}
-	
-	public int update(String contents, int seq, int parent_seq) {
-		String sql = "update reply set contents = ? where seq =? and parent_seq=?";
-		return jdbc.update(sql,contents,seq, parent_seq);
-	}
-}	
+}

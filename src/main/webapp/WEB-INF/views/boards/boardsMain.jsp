@@ -109,7 +109,7 @@
        		<c:forEach var="i" items="${list}">
        		<div class="list">
             <span class="span6">${i.seq}</span>
-            <span class="span7"><a href="/board/detail?seq=${i.seq}&cPage=${cPage}" class="link">${i.title}</a></span>
+            <span class="span7"><a href="/boards/detail?seq=${i.seq}" class="link">${i.title}</a></span>
             <span class="span8">${i.writer}</span>
             <span class="span9">${i.write_date}</span>
             <span class="span10">${i.view_count}</span>
@@ -134,7 +134,7 @@
     	let recordTotalCount =${recordTotalCount};
     	let recordCountPerPage = ${recordCountPerPage};
     	let naviCountPerPage = ${naviCountPerPage};
-    	let currentPage = ${currentPage};
+    	let currentPage = ${cPage};
     	let pageTotalCount =0;
     	//정수와 실수를 구분하지 않음
     	let startNavi = Math.floor((currentPage - 1)/ naviCountPerPage) * naviCountPerPage + 1;
@@ -162,21 +162,21 @@
     	
     	if(needPrev){
     		let prev = $("<a>");
-    		prev.attr("href","/board/toBoard?currentPage="+(startNavi-1));
+    		prev.attr("href","/board/list?cPage="+(startNavi-1));
     		prev.html("<<");
     		$(".pageNum").append(prev);
     	}
     	
     	for(let i = startNavi ;i <= endNavi ;i++){
     		let navi = $("<a>");
-    		navi.attr("href","/board/toBoard?currentPage="+i);
+    		navi.attr("href","/board/list?cPage="+i);
     		navi.html(i);
     		$(".pageNum").append(navi);
     	}
     	
     	if(needNext){
     		let next = $("<a>");
-    		next.attr("href","/board/toBoard?currentPage="+(endNavi+1));
+    		next.attr("href","/board/list?cPage="+(endNavi+1));
     		next.html(">>");
     		$(".pageNum").append(next);
     	}

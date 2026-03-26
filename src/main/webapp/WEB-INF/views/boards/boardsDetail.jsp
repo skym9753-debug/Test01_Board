@@ -103,7 +103,7 @@ height: 50px; font-size: large;}
 
 <body>
 	<div class="title">글쓰기</div>
-	<form id="form" action="/boards/update?cPage=${cPage}">
+	<form id="form" action="/boards/update">
 		<div class="body">
 			<div class="postTitle">
 				<span contenteditable="false">글번호</span><input type="text" id="seq"
@@ -134,12 +134,7 @@ height: 50px; font-size: large;}
 					data-ori="${dto.contents}" disabled><input type="hidden"
 					id="defaultContents" value="${dto.contents}">
 			</div>
-			<div class="postTitle">
-				<span contenteditable="false">첨부파일</span>
-				<c:forEach var="i" items="${list2}">
-					<a href="/boards/download?sys_name=${i.sys_name}&ori_name=${i.ori_name}"> ${i.ori_name} </a>
-				</c:forEach>	
-			</div>
+			
 		</div>
 		<div class="btns">
 			<c:if test="${loginId==dto.writer}">

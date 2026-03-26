@@ -68,16 +68,15 @@
     <div class="title">
         글쓰기
     </div>
-    <form action="/board/postUpload" method="post" enctype="multipart/form-data">
+    <form action="/boards/postUpload" method="post" enctype="multipart/form-data">
     <div class="body">
         <div class="writer"><span>작성자</span><input type="text" name="writer" value="${loginId}" style="width: 90%; height: 30px;" readonly></div>
         <div class="postTitle"><span>제목</span><input type="text" name="title" placeholder="제목을 입력하세요" style="width: 90%; height: 30px; padding : 0px"></div>
-        <div class="attachment"><span>파일첨부</span><input type="file" name="files" multiple></div>
         <div class="content"><span>내용</span><input type="text" name="contents" style="width: 90%; height :480px" placeholder="내용을 입력하세요"></div>
     </div>
     <div class="btns">
         <button>등록</button> 
-        <a href="/board/toBoard"><input type="button" value="취소"></a>
+        <a href="/boards/list?cPage="${cPage}><input type="button" value="취소"></a>
     </div>
     </form>
 </body>
